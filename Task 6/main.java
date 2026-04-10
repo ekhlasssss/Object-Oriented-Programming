@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class ShapeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("Choose a shape to calculate:");
+            System.out.println("1. Circle");
+            System.out.println("2. Rectangle");
+            System.out.println("3. Triangle");
+            System.out.println("4. Exit");
+            System.out.print("> ");
+            choice = scanner.nextInt();
+
+            Shape shape = null;
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the radius of the circle: ");
+                    double radius = scanner.nextDouble();
+                    shape = new Circle(radius);
+                    break;
+                case 2:
+                    System.out.print("Enter the length of the rectangle: ");
+                    double length = scanner.nextDouble();
+                    System.out.print("Enter the width of the rectangle: ");
+                    double width = scanner.nextDouble();
+                    shape = new Rectangle(length, width);
+                    break;
+                case 3:
+                    System.out.print("Enter side A: ");
+                    double sideA = scanner.nextDouble();
+                    System.out.print("Enter side B: ");
+                    double sideB = scanner.nextDouble();
+                    System.out.print("Enter side C: ");
+                    double sideC = scanner.nextDouble();
+                    shape = new Triangle(sideA, sideB, sideC);
+                    break;
+                case 4:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+            if (shape != null) {
+                shape.displayInfo();
+            }
+
+        } while (choice != 4);
+
+        scanner.close();
+    }
+}
