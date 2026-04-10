@@ -1,25 +1,35 @@
-public class Bird extends Pet {
+public class Pet {
+    protected String petName;
+    protected int energy;
 
-    public Bird(String petName) {
-        super(petName);
+    static int totalPets = 0;
+    static String environmentCondition = "Sunny";
+
+    public Pet(String petName) {
+        this.petName = petName;
+        this.energy = 100;
+        totalPets++;
     }
 
-    @Override
     public void eat() {
-        energy += 10;
-        System.out.println(petName + " pecks at its food quickly.");
+        System.out.println(petName + " is eating!");
     }
 
-    @Override
     public void play() {
-        int loss = 10 + (int)(Math.random() * 21);
-        energy -= loss;
-        System.out.println(petName + " soars through the sky!");
+        System.out.println(petName + " is playing!");
     }
 
-    @Override
     public void sleep() {
-        energy += 30;
+        energy = 100;
         System.out.println(petName + " is sleeping...");
+    }
+
+    public static void displaySimulationStats() {
+        System.out.println("Total Pets Created: " + totalPets);
+        System.out.println("Current Environment: " + environmentCondition);
+    }
+
+    public static void updateEnvironment(String newCondition) {
+        environmentCondition = newCondition;
     }
 }
